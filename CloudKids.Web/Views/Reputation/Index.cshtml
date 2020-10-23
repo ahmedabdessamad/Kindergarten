@@ -1,0 +1,61 @@
+﻿@model IEnumerable<CloudKids.Domain.Entities.Reputation>
+    
+
+@{
+    ViewBag.Title = "Index";
+}
+<br /><br /><br /><br /><br /><br /><br /><br />
+<h2>Index</h2>
+
+
+<div class="widget widget-search">
+    @using (Html.BeginForm("Index", "Reputation", FormMethod.Get))
+    {
+        @Html.TextBox("search")
+        <button type="submit"><i class="fa fa-search"></i></button>
+    }
+</div><!-- widget-search end-->
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProfilJardin.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prix)
+            </th>
+            <th></th>
+        </tr>
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProfilJardin.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Type)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Prix)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+        }
+
+    </table>

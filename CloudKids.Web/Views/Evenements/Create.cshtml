@@ -1,0 +1,73 @@
+﻿eausing System.Web.UI.WebControls
+@model CloudKids.Domain.Entities.Evenement
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm("Create", "Evenements", FormMethod.Post, new { enctype = "multipart/form-data" })) 
+{
+    @Html.AntiForgeryToken()
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+		<section class="block3">
+			<div class="fixed-bg bg9"></div>
+			<div class="container">
+				<div class="enquiry-sec">
+					<div class="heading clr">
+						<h3>Create New Event</h3>
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+					</div>
+					<div class="contact_sec">
+						<form>
+							<div class="row">
+                                <div class="col-lg-6">
+                                    <div class="input-field">
+                                        @Html.EditorFor(model => model.Host, new { htmlAttributes = new { @PlaceHolder = "Host" } })
+                                        @Html.ValidationMessageFor(model => model.Host, "", new { @class = "text-danger" })
+                                    </div><!--input-field end-->
+                                    <div class="input-field">
+                                        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @PlaceHolder = "Description" } })
+                                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+								<div class="col-lg-6">
+                                    <div class="input-field">
+                                        @Html.EditorFor(model => model.Lieu, new { htmlAttributes = new { @PlaceHolder = "Lieu" } })
+                                        @Html.ValidationMessageFor(model => model.Lieu, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="input-field">
+                                        @Html.EditorFor(model => model.Tel, new { htmlAttributes = new { @PlaceHolder = "Numereau Tel" } })
+                                        @Html.ValidationMessageFor(model => model.Tel, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="input-field">
+                                        @Html.EditorFor(model => model.EmailContact, new { htmlAttributes = new { @PlaceHolder = "Votre Email" , @type="email" } })
+                                        @Html.ValidationMessageFor(model => model.EmailContact, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div>
+                                        <input type="file" name="file" />
+                                    </div><!--input-field end-->
+								</div>
+								<div class="col-md-9">
+									<div class="btn-submit">
+										<button type="submit">Create</button>
+									</div><!--btn-submit end-->
+								</div>
+							</div>
+						</form>
+					</div><!--contact_sec end-->
+				</div><!--enquiry-sec end-->
+			</div>
+		</section>
+        
+    
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
